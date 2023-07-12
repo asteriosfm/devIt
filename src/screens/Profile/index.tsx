@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import styled from 'styled-components/native';
-import { ScrollView, TouchableOpacity } from 'react-native';
+import { ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from "yup";
 
@@ -127,6 +127,7 @@ function Profile() {
               hasError={!!errors.name}
               errorText={errors.name as string}
               touched={!!touched.name}
+              style={styles.input}
             />
             <InputComponent
               disabled={false}
@@ -138,6 +139,8 @@ function Profile() {
               hasError={!!errors.email}
               errorText={errors.email as string}
               touched={!!touched.email}
+              style={styles.input}
+              email
             />
             <InputComponent
               disabled={false}
@@ -149,6 +152,7 @@ function Profile() {
               hasError={!!errors.phone}
               errorText={errors.phone as string}
               touched={!!touched.phone}
+              style={styles.input}
             />
             <InputComponent
               disabled={false}
@@ -160,6 +164,7 @@ function Profile() {
               hasError={!!errors.position}
               errorText={errors.position as string}
               touched={!!touched.position}
+              style={styles.input}
             />
             <InputComponent
               disabled={false}
@@ -171,6 +176,7 @@ function Profile() {
               hasError={!!errors.skype}
               errorText={errors.skype as string}
               touched={!!touched.skype}
+              style={styles.input}
             />
 
             <Button
@@ -187,6 +193,12 @@ function Profile() {
 
 export default Profile;
 
+const styles = StyleSheet.create({
+  input: {
+    marginBottom: 40,
+  }
+})
+
 const Container = styled.View`
   flex: 1;
 `;
@@ -194,10 +206,10 @@ const Container = styled.View`
 const Head = styled.View`
   min-width: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-top: 50px;
+  flexDirection: row;
+  justifyContent: center;
+  alignItems: center;
+  marginTop: 50px;
   position: relative;
   padding: 0px 32px
 `;
@@ -205,9 +217,9 @@ const Head = styled.View`
 const AvatarContainer = styled.View`
   width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  flexDirection: column;
+  justifyContent: center;
+  alignItems: center;
   margin: 30px 0;
 `;
 
@@ -225,10 +237,11 @@ const EditAvatarContainer = styled.View`
 
 const Title = styled.Text`
   color: #1F1D1D;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  text-transform: capitalize;
+  fontSize: 18px;
+  fontFamily: Poppins;
+  fontStyle: normal;
+  fontWeight: 500;
+  textTransform: capitalize;
 `;
 
 const RightAction = styled.View`
@@ -238,30 +251,32 @@ const RightAction = styled.View`
 
 const RightActionText = styled.Text`
   color: #FFC612;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
+  fontSize: 14px;
+  fontFamily: Poppins;
+  fontStyle: normal;
+  fontWeight: 400;
   padding: 5px;
 `;
 
 const Name = styled.Text`
-  margin-top: 10px;
+  marginTop: 10px;
   color: #1F1D1D;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 500;
-  text-transform: capitalize;
+  fontSize: 24px;
+  fontFamily: Poppins;
+  fontStyle: normal;
+  fontWeight: 500;
+  textTransform: capitalize;
 `;
 
 const Avatar = styled.View`
   width: 70px;
   height: 70px;
-  flex-shrink: 0;
-  border-radius: 70px;
+  flexShrink: 0;
+  borderRadius: 70px;
   background: #FFC612;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justifyContent: center;
+  alignItems: center;
 `;
 
 const StyledAvatarImage = styled.Image`
@@ -273,12 +288,13 @@ const StyledAvatarImage = styled.Image`
 `
 
 const Position = styled.Text`
-  margin-top: 3px;
+  marginTop: 3px;
   color: #9795A4;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  text-transform: capitalize;
+  fontSize: 14px;
+  fontFamily: Poppins;
+  fontStyle: normal;
+  fontWeight: 500;
+  textTransform: capitalize;
 `;
 
 const Form = styled.View`

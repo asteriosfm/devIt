@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useCallback, useEffect, useRef, useState } from "react";
 import { styled } from "styled-components/native";
 import { NativeSyntheticEvent, TextInputKeyPressEventData } from "react-native";
+import { StyleProp, View, ViewStyle } from "react-native";
 
 import InputItem from "./InputItem";
 
@@ -17,6 +18,8 @@ export interface Props {
   hasError?: boolean;
   touched?: boolean;
   password?: boolean;
+  style?: StyleProp<ViewStyle>
+
 }
 
 const LENGTH = 4;
@@ -30,6 +33,7 @@ const CodeInput = ({
   onChangeText,
   onBlur,
   touched = false,
+  style = {}
 }: Props) => {
   const [code, setCode] = useState<string[]>(DEFAULT_CODE);
 
@@ -100,21 +104,25 @@ const CodeInput = ({
   }, [code])
 
   return (
-    <Container>
-      {label && (
-        <LabelContainer>
-          <LabelText>{label}</LabelText>
-        </LabelContainer>
-      )}
-      <Wrappers>
-        {renderInputs()}
-      </Wrappers>
-      {error && (
-        <ErrorContainer>
-          <ErrorText>{errorText}</ErrorText>
-        </ErrorContainer>
-      )}
-    </Container>
+    <View
+      style={style}
+    >
+      <Container>
+        {label && (
+          <LabelContainer>
+            <LabelText>{label}</LabelText>
+          </LabelContainer>
+        )}
+        <Wrappers>
+          {renderInputs()}
+        </Wrappers>
+        {error && (
+          <ErrorContainer>
+            <ErrorText>{errorText}</ErrorText>
+          </ErrorContainer>
+        )}
+      </Container>
+    </View>
   );
 };
 
@@ -125,7 +133,6 @@ const Container = styled.View`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 40px
 `
 const LabelContainer = styled.View`
   margin-bottom: 15px;
@@ -133,10 +140,11 @@ const LabelContainer = styled.View`
 
 const LabelText = styled.Text`
   color: #9795A4;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  text-transform: capitalize;
+  fontSize: 14px;
+  fontStyle: normal;
+  fontWeight: 500;
+  textTransform: capitalize;
+  fontFamily: Poppins;
 `
 const Wrappers = styled.View`
   display: flex;
@@ -149,8 +157,9 @@ const ErrorContainer = styled.View`
 
 const ErrorText = styled.Text`
   color: #FF4848;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  text-transform: capitalize;
+  fontSize: 14px;
+  fontStyle: normal;
+  fontWeight: 500;
+  textTransform: capitalize;
+  fontFamily: Poppins;
 `;

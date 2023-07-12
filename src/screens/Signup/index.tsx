@@ -92,7 +92,7 @@ function Signup({ navigation }) {
           <Form>
             <PhoneInput
               disabled={false}
-              placeholder='phone'
+              placeholder='345 567-23-56'
               label='Your Phone'
               onChangeText={(code: string, phone: string) => {
                 handleChange('phone')(phone)
@@ -103,6 +103,7 @@ function Signup({ navigation }) {
               hasError={!!errors.phone || !!errors.phoneCode}
               errorText={errors.phone as string || errors.phoneCode as string}
               touched={!!touched.phone || !!touched.phoneCode}
+              style={styles.input}
             />
             <CodeInput
               disabled={false}
@@ -114,6 +115,7 @@ function Signup({ navigation }) {
               hasError={!!errors.code}
               errorText={errors.code as string}
               touched={!!touched.code}
+              style={styles.input}
             />
             <InputComponent
               disabled={false}
@@ -125,6 +127,7 @@ function Signup({ navigation }) {
               hasError={!!errors.name}
               errorText={errors.name as string}
               touched={!!touched.name}
+              style={styles.input}
             />
             <InputComponent
               disabled={false}
@@ -136,6 +139,8 @@ function Signup({ navigation }) {
               hasError={!!errors.email}
               errorText={errors.email as string}
               touched={!!touched.email}
+              style={styles.input}
+              email
             />
             <InputComponent
               disabled={false}
@@ -147,7 +152,8 @@ function Signup({ navigation }) {
               hasError={!!errors.password}
               errorText={errors.password as string}
               touched={!!touched.password}
-              password={true}
+              password
+              style={styles.input}
             />
             <InputComponent
               disabled={false}
@@ -159,7 +165,8 @@ function Signup({ navigation }) {
               hasError={!!errors.passwordConf}
               errorText={errors.passwordConf as string}
               touched={!!touched.passwordConf}
-              password={true}
+              password
+              style={styles.input}
             />
 
             <Button
@@ -185,6 +192,12 @@ function Signup({ navigation }) {
   </Container>
 }
 
+const styles = StyleSheet.create({
+  input: {
+    marginBottom: 40,
+  }
+})
+
 const Container = styled.View`
   flex: 1;
 `
@@ -192,18 +205,19 @@ const Container = styled.View`
 const LogoView = styled.View`
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 110px;
-  margin-top: 50px;
+  justifyContent: center;
+  alignItems: center;
+  marginBottom: 110px;
+  marginTop: 50px;
 `;
 
 const Title = styled.Text`
-  margin-bottom: 50px;
+  marginBottom: 50px;
   width: 100%;
-  text-align: center;
+  textAlign: center;
   color: #1F1D1D;
   fontSize: 24px;
+  fontFamily: Poppins;
   fontStyle: normal;
   fontWeight: 500;
   textTransform: capitalize;
@@ -222,24 +236,26 @@ const Bottom = styled.View`
   width: 100%;
   display: flex;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 206px;
-  flex-direction: row;
+  justifyContent: center;
+  alignItems: center;
+  marginBottom: 206px;
+  flexDirection: row;
 `;
 
 const LeftText = styled.Text`
   color: #9795A4;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
+  fontSize: 14px;
+  fontFamily: Poppins;
+  fontStyle: normal;
+  fontWeight: 400;
 `;
 
 const RightText = styled.Text`
   color: #FFC612;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
+  fontSize: 14px;
+  fontFamily: Poppins;
+  fontStyle: normal;
+  fontWeight: 400;
 `;
 
 

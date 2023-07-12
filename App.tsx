@@ -4,16 +4,23 @@ import UserContext from './src/common/userContext';
 import AppRouter from './src/AppRouter';
 import getConnection from './src/common/db/connection';
 import DBClientContext from './src/common/dbClientContext';
+import WithFonts from './src/common/WithFonts';
 
 
-function App(): JSX.Element {
+interface Props {
+  fontsLoaded: boolean,
+}
+
+const App: React.FC<Props> = () => {
   const [user, setUser] = useState(null)
 
-  return (<DBClientContext.Provider value={{ client: getConnection() }}>
-    <UserContext.Provider value={{user, setUser}}>
-      <AppRouter />
-    </UserContext.Provider>
-  </DBClientContext.Provider>
+  return (<WithFonts>
+    <DBClientContext.Provider value={{ client: getConnection() }}>
+      <UserContext.Provider value={{user, setUser}}>
+        <AppRouter />
+      </UserContext.Provider>
+    </DBClientContext.Provider>
+  </WithFonts>
   );
 }
 

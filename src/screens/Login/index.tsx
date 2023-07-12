@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { ScrollView, TouchableOpacity } from 'react-native';
+import { ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { styled } from 'styled-components/native';
 import { Formik } from 'formik';
 import * as Yup from "yup";
@@ -81,6 +81,8 @@ function Signup({ navigation }) {
               hasError={!!errors.email}
               errorText={errors.email as string}
               touched={!!touched.email}
+              style={styles.input}
+              email
             />
             <InputComponent
               disabled={false}
@@ -92,8 +94,12 @@ function Signup({ navigation }) {
               hasError={!!errors.password}
               errorText={errors.password as string}
               touched={!!touched.password}
-              password={true}
+              style={styles.inputSmallMargin}
+              password
             />
+            <ForgotText>
+              Forgot password?
+            </ForgotText>
             <Button
               title='Log in'
               onPress={() => handleSubmit(values)}
@@ -117,6 +123,15 @@ function Signup({ navigation }) {
   </Container>
 }
 
+const styles = StyleSheet.create({
+  input: {
+    marginBottom: 40,
+  },
+  inputSmallMargin: {
+    marginBottom: 20,
+  }
+})
+
 const Container = styled.View`
   flex: 1;
 `;
@@ -124,18 +139,19 @@ const Container = styled.View`
 const LogoView = styled.View`
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 110px;
-  margin-top: 50px;
+  justifyContent: center;
+  alignItems: center;
+  marginBottom: 110px;
+  marginTop: 50px;
 `;
 
 const Title = styled.Text`
   margin-bottom: 50px;
   width: 100%;
-  text-align: center;
+  textAlign: center;
   color: #1F1D1D;
   fontSize: 24px;
+  fontFamily: Poppins;
   fontStyle: normal;
   fontWeight: 500;
   textTransform: capitalize;
@@ -154,24 +170,37 @@ const Bottom = styled.View`
   width: 100%;
   display: flex;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justifyContent: center;
+  alignItems: center;
   margin-bottom: 206px;
   flex-direction: row;
 `;
 
 const LeftText = styled.Text`
   color: #9795A4;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
+  fontSize: 14px;
+  fontFamily: Poppins;
+  fontStyle: normal;
+  fontWeight: 400;
 `;
 
 const RightText = styled.Text`
   color: #FFC612;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
+  fontSize: 14px;
+  fontFamily: Poppins;
+  fontStyle: normal;
+  fontWeight: 400;
+`;
+
+const ForgotText = styled.Text`
+  color: #9795A4;
+  fontSize: 14px;
+  fontFamily: Poppins;
+  fontStyle: normal;
+  fontWeight: 400;
+  marginBottom: 50px;
+  width: 100%;
+  textAlign: right;
 `;
 
 export default Signup;

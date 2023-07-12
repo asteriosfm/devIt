@@ -54,8 +54,8 @@ export default InputItem;
 
 const Wrapper = styled.View`
   display: flex;
-  align-items: center;
-  justify-content: center;
+  alignItems: center;
+  justifyContent: center;
   flex: 1;
   minHeight: 48px;
   height: 48px;
@@ -80,7 +80,12 @@ const Wrapper = styled.View`
 const Input = styled.TextInput`
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  alignItems: center;
+  justifyContent: center;
   padding: 12px 15px 12px 18px;
+  color: #1F1D1D;
+  fontSize: 16px;
+  fontStyle: normal;
+  fontWeight: 500;
+  fontFamily: Poppins;
 `

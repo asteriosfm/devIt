@@ -1,11 +1,10 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { useState } from "react";
 import { styled, css } from "styled-components/native";
-import { View, Text, Pressable, Modal, StyleSheet } from 'react-native';
 import { ExecutionContext } from "styled-components";
-import SelectDropdown from 'react-native-select-dropdown'
+import { StyleProp, View, ViewStyle } from "react-native";
 
-import Arrow from '../../../assets/Arrow.svg';
 import Dropdown from "./Dropdown";
+
 
 export interface Props {
   name?: string;
@@ -19,6 +18,7 @@ export interface Props {
   hasError?: boolean;
   touched?: boolean;
   password?: boolean;
+  style?: StyleProp<ViewStyle>
 }
 
 interface InputWrapperProps extends ExecutionContext {
@@ -38,6 +38,7 @@ const PhoneInput = ({
   onChangeText,
   onBlur,
   touched = false,
+  style = {},
 }: Props) => {
   const [code, setCode] = useState<string>('');
   const [isFocused, setIsFocused] = useState(false);
@@ -50,65 +51,68 @@ const PhoneInput = ({
     setIsFocused(false);
   };
 
-
   return (
-    <Container>
-      {label && (
-        <LabelContainer>
-          <LabelText>{label}</LabelText>
-        </LabelContainer>
-      )}
-      <Wrappers>
-        <Dropdown
-          error={errorText && hasError && touched}
-          code={code}
-          setCode={setCode}
-        />
-        <RightWrapper
-          error={errorText && hasError && touched}
-          focused={isFocused}
-        >
-          <Input
-            id={name}
-            value={value}
-            onChangeText={(phone: string) => onChangeText(code, phone)}
-            onFocus={handleFocus}
-            onBlur={(e) => {
-              handleUnFocus();
-              onBlur(e)
-            }}
-            placeholder={placeholder}
-            data-name={name}
-            keyboardType='numeric'
+    <View
+      style={style}
+    >
+      <Container>
+        {label && (
+          <LabelContainer>
+            <LabelText>{label}</LabelText>
+          </LabelContainer>
+        )}
+        <Wrappers>
+          <Dropdown
+            error={errorText && hasError && touched}
+            code={code}
+            setCode={setCode}
           />
-        </RightWrapper>
-      </Wrappers>
-      {errorText && hasError && touched && (
-        <ErrorContainer>
-          <ErrorText>{errorText}</ErrorText>
-        </ErrorContainer>
-      )}
-    </Container>
+          <RightWrapper
+            error={errorText && hasError && touched}
+            focused={isFocused}
+          >
+            <Input
+              id={name}
+              value={value}
+              onChangeText={(phone: string) => onChangeText(code, phone)}
+              onFocus={handleFocus}
+              onBlur={(e) => {
+                handleUnFocus();
+                onBlur(e)
+              }}
+              placeholder={placeholder}
+              data-name={name}
+              keyboardType='numeric'
+            />
+          </RightWrapper>
+        </Wrappers>
+        {errorText && hasError && touched && (
+          <ErrorContainer>
+            <ErrorText>{errorText}</ErrorText>
+          </ErrorContainer>
+        )}
+      </Container>
+    </View>
   );
 };
 
 
 const Container = styled.View`
   display: flex;
-  flex-direction: column;
+  flexDirection: column;
   width: 100%;
-  margin-bottom: 40px
 `
 const LabelContainer = styled.View`
-  margin-bottom: 15px;
+  marginBottom: 15px;
 `
 
 const LabelText = styled.Text`
   color: #9795A4;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  text-transform: capitalize;
+  fontSize: 14px;
+  fontFamily: Poppins;
+  fontStyle: normal;
+  fontWeight: 500;
+  textTransform: capitalize;
 `
 const Wrappers = styled.View`
   display: inline-flex;
@@ -117,8 +121,8 @@ const Wrappers = styled.View`
 
 const RightWrapper = styled.View`
   display: flex;
-  align-items: center;
-  justify-content: center;
+  alignItems: center;
+  justifyContent: center;
   flex: 1;
   padding: 12px 15px;
   minHeight: 48px;
@@ -126,7 +130,7 @@ const RightWrapper = styled.View`
   borderWidth: 1px;
   display: inline-flex;
   borderRadius: 15px;
-  box-sizing: border-box;
+  boxSizing: border-box;
   marginLeft: 25px;
   ${(props: InputWrapperProps) => {
     if (props.error) {
@@ -140,18 +144,24 @@ const RightWrapper = styled.View`
 
 const Input = styled.TextInput`
   width: 100%;
+  color: #1F1D1D;
+  fontSize: 16px;
+  fontFamily: Poppins;
+  fontStyle: normal;
+  fontWeight: 500;
 `
 
 const ErrorContainer = styled.View`
-  margin-top: 10px;
+  marginTop: 10px;
 `
 
 const ErrorText = styled.Text`
   color: #FF4848;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  text-transform: capitalize;
+  fontSize: 14px;
+  fontFamily: Poppins;
+  fontStyle: normal;
+  fontWeight: 500;
+  textTransform: capitalize;
 `;
 
 

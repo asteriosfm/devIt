@@ -71,13 +71,17 @@ const styles = StyleSheet.create({
   },
   buttonTextStyleDefault: {
     color: '#9795A4',
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: "500",
+    fontStyle: 'normal',
+    fontFamily: 'Poppins',
   },
   buttonTextStyle: {
     color: '#1F1D1D',
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: "500",
+    fontStyle: 'normal',
+    fontFamily: 'Poppins',
   },
   rowStyle: {
     width: 70,
@@ -89,8 +93,9 @@ const styles = StyleSheet.create({
   },
   rowTextStyle: {
     color: '#1F1D1D',
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: "500",
+    fontFamily: 'Poppins',
   }
 });
 
@@ -104,8 +109,8 @@ const Wrapper = styled.Pressable`
   borderRadius: 15px;
   box-sizing: border-box;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  alignItems: center;
+  justifyContent: center;
   ${(props: InputWrapperProps) => {
     if (props.error) {
       return css`borderColor: #FF4848;`

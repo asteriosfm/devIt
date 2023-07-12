@@ -25,8 +25,8 @@ const Button: FC<Props> = ({
 const StyledButton = styled.TouchableOpacity`
   padding: 18px 0px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justifyContent: center;
+  alignItems: center;
   border-radius: 20px;
   background: #FFC612;
   width: 100%;
@@ -34,10 +34,11 @@ const StyledButton = styled.TouchableOpacity`
 
 const Title = styled.Text`
   color: #1F1D1D;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  text-transform: capitalize;
+  fontSize: 18px;
+  fontStyle: normal;
+  fontWeight: 500;
+  textTransform: capitalize;
+  fontFamily: Poppins;
 `;
 
 export default Button;
