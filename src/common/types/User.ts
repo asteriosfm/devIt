@@ -10,8 +10,8 @@ export interface User {
 
 export const userDefault = {
   name: '',
-  email: 'asteriosfm@gmail.com',
-  password: '123456',
+  email: '',
+  password: '',
   position: '',
   skype: '',
   phone: '',
